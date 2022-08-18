@@ -1,8 +1,15 @@
-import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { KeyboardAvoidingView, StatusBar, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { 
+  KeyboardAvoidingView, 
+  StatusBar, 
+  TouchableWithoutFeedback, 
+  Keyboard, 
+  Alert 
+} from 'react-native';
 import { useTheme } from 'styled-components/native';
 import * as Yup from 'yup';
+import { useAuth } from '../../hooks/auth';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 import { PasswordInput } from '../../components/PasswordInput';
@@ -20,6 +27,7 @@ export function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigation = useNavigation();
+  const { signIn } = useAuth();
 
   async function handleSignIn() {
     try {
@@ -30,8 +38,12 @@ export function SignIn() {
         password: Yup.string()
           .required('Asenha é obrigatória'),
       });
+
       await schema.validate({ email, password });
+
       Alert.alert('Tudo certo!');
+      
+      signIn({ email, password});
     } catch (error) {
       if(error instanceof Yup.ValidationError){
         Alert.alert('Ops', error.message);
@@ -85,7 +97,7 @@ export function SignIn() {
             <Button 
               title='Login'
               onPress={handleSignIn}
-              enabled={false}
+              enabled={true}
               loading={false}
             />
 
