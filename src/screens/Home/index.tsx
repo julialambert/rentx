@@ -18,7 +18,7 @@ import {
 export function Home() {
   const navigation = useNavigation();
   const [loading, setLoading] = useState(true);
-  const [cars, setCars] = useState<CarDTO>([]);
+  const [cars, setCars] = useState<CarDTO[]>([]);
 
   function handleCarDetails(car: CarDTO) {
     navigation.navigate('CarDetails', {
