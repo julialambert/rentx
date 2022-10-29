@@ -4,16 +4,16 @@
 Complete application to rent cars.
 
 ## Iniciando a aplicação
-Lembre-se de atualizar a baseURL em services/api.ts com o endereço IP da sua máquina para utilizar o back-end.
+Remember to update the baseURL in services/api.ts with your machine's IP address to use the backend.
 
-Em seguida execute a API:
+Then run the API:
 
 ```bash
 yarn start
 ```
 
 ## Rotas da API
-Para visualizar exemplos testados de todas as rotas da API, você pode importar no seu Insomnia o arquivo: api/rotas_Insomnia.json 
+To view tested examples of all API routes, you can import into your Insomnia the file: api/routas_Insomnia.json
 
 
 ## Stack
